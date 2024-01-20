@@ -36,14 +36,38 @@ class MainViewController: UIViewController {
         $0.font = UIFont.boldSystemFont(ofSize: 20)
         return $0
     }(UILabel())
+    
+    lazy var settingsButton: UIButton = {
+        $0.setTitle("Настройки", for:.normal)
+        $0.setTitleColor(.systemBlue, for: .normal)
+        $0.layer.cornerRadius = 25
+        return $0
+    }(UIButton(frame: CGRect(x: 0 , y: 0, width: 100, height: 25),primaryAction: openSettings))
+    
+    lazy var topStack: UIStackView = {
+        $0.axis = .vertical
+        $0.alignment = .center
+        $0.spacing = 20
+        $0.addArrangedSubview(profileImg)
+        $0.addArrangedSubview(labelStack)
+        $0.addArrangedSubview(settingsButton)
+        return $0
+    }(UIStackView(frame: CGRect(x: view.center.x - 100, y: 150 , width: 200, height: 200)))
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
-        view.addSubview(profileImg)
-        view.addSubview(labelStack)
+        title = "Профиль"
+        navigationController?.navigationBar.prefersLargeTitles = true
+
+//        view.addSubview(profileImg)
+//        view.addSubview(labelStack)
+//        view.addSubview(settingsButton)
+        view.addSubview(topStack)
     }
-
-
+    
+    lazy var openSettings = UIAction{_ in
+        let  navigatioVC = SettingsViewController()
+        self.navigationController?.pushViewController(navigatioVC, animated: true)
+    }
 }
 
