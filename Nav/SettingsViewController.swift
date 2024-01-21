@@ -11,20 +11,18 @@ class SettingsViewController: UIViewController {
     
     var delegate: ViewControllerDelegate?
     
+    lazy var secondViewTbl: UITableView = {
+        $0.addSubview(topLabel)
+        $0.addSubview(backgroundSquareView)
+        return $0
+    }(UITableView(frame: view.frame))
+    
     lazy var topLabel: UILabel = {
         $0.text = "Введите новые данные"
         $0.numberOfLines = 0
         return $0
-    }(UILabel())
+    }(UILabel(frame: CGRect(x: 31, y: 100, width: view.frame.width - 62, height: 19)))
     
-    lazy var mainStack: UIStackView = {
-        $0.axis = .vertical
-        $0.alignment = .leading
-        $0.spacing = 20
-        $0.addArrangedSubview(topLabel)
-        $0.addArrangedSubview(backgroundSquareView)
-        return $0
-    }(UIStackView(frame: CGRect(x: 30, y: view.center.y - 100, width: view.frame.width - 62, height: view.frame.height - 300)))
     
     lazy var nameTextField: UITextField = {
         $0.placeholder = "Имя"
@@ -57,7 +55,7 @@ class SettingsViewController: UIViewController {
         $0.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
         $0.layer.cornerRadius = 25
         return $0
-    }(UIView(frame: CGRect(x: 31, y: view.center.y - 100, width: view.frame.width - 62, height: 252 )))
+    }(UIView(frame: CGRect(x: 31, y: topLabel.frame.height + 150, width: view.frame.width - 62, height: 252 )))
     
     
     lazy var saveButton: UIButton = {
@@ -82,14 +80,13 @@ class SettingsViewController: UIViewController {
         title = "Настройки"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
-        view.addSubview(backgroundSquareView)
+        view.addSubview(secondViewTbl)
         backgroundSquareView.addSubview(textFieldStack)
         backgroundSquareView.addSubview(saveButton)
-        view.addSubview(mainStack)
     }
     func ofsetView() ->UIView{
         let ofsetView = UIView()
-        ofsetView.frame = CGRect(x: 0, y: 0, width: 10, height: 54)
+        ofsetView.frame = CGRect(x: 0, y: 0, width: 20, height: 54)
         return ofsetView
     }
     
