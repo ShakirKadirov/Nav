@@ -7,14 +7,25 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+protocol ViewControllerDelegate{
+    func setName(nameLbl: String, surNameLbl: String)
+    
+}
+
+class MainViewController: UIViewController, ViewControllerDelegate {
+    
+    func setName(nameLbl: String, surNameLbl: String) {
+        self.nameLbl.text = nameLbl
+        self.surNameLbl.text = surNameLbl
+    }
+    
     
     lazy var profileImg: UIImageView = {
         $0.image = UIImage(named: "mountainImage.jpg")
         $0.clipsToBounds = true
         $0.layer.cornerRadius = $0.frame.height / 2
         return $0
-    }(UIImageView(frame: CGRect(x: 100, y: 100, width: 100, height: 100)))
+    }(UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100)))
     
     lazy var labelStack: UIStackView = {
         $0.axis = .horizontal
@@ -53,16 +64,30 @@ class MainViewController: UIViewController {
         $0.addArrangedSubview(settingsButton)
         return $0
     }(UIStackView(frame: CGRect(x: view.center.x - 100, y: 150 , width: 200, height: 200)))
+    
+    lazy var middleStack: UIStackView = {
+        $0.axis = .horizontal
+        $0.alignment = .center
+        $0.backgroundColor = .systemBlue
+        $0.spacing = 20
+        return $0
+    }(UIStackView(frame: CGRect(x: 31, y: topStack.frame.height + 160 , width: view.frame.width - 62 , height: 80)))
+    
+    lazy var contantImageView: UIImageView = {
+        $0.image = UIImage(named: "mountainImage.jpg")
+        $0.layer.cornerRadius = 25
+        $0.clipsToBounds = true
+        return $0
+    }(UIImageView(frame: CGRect(x: 31, y: view.center.y - 10, width: view.frame.width - 62, height: view.frame.height - view.center.y - 62)))
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         title = "Профиль"
         navigationController?.navigationBar.prefersLargeTitles = true
 
-//        view.addSubview(profileImg)
-//        view.addSubview(labelStack)
-//        view.addSubview(settingsButton)
         view.addSubview(topStack)
+        view.addSubview(middleStack)
+        view.addSubview(contantImageView)
     }
     
     lazy var openSettings = UIAction{_ in
