@@ -23,6 +23,8 @@ class MainViewController: UIViewController, ViewControllerDelegate {
         $0.addSubview(profileImg)
         $0.addSubview(labelStack)
         $0.addSubview(settingsButton)
+        $0.addSubview(middleStack)
+        $0.addSubview(contantImageView)
         return $0
     }(UITableView(frame: view.frame))
     
@@ -61,29 +63,46 @@ class MainViewController: UIViewController, ViewControllerDelegate {
         return $0
     }(UIButton(frame: CGRect(x: view.center.x - 50 , y: labelStack.frame.origin.y + 50, width: 100, height: 25),primaryAction: openSettings))
     
-//    lazy var middleStack: UIStackView = {
-//        $0.axis = .horizontal
-//        $0.alignment = .center
-//        $0.backgroundColor = .systemBlue
-//        $0.spacing = 20
-//        return $0
-//    }(UIStackView(frame: CGRect(x: 31, y: topStack.frame.height + 160 , width: view.frame.width - 62 , height: 80)))
-////    
-//    lazy var contantImageView: UIImageView = {
-//        $0.image = UIImage(named: "mountainImage.jpg")
-//        $0.layer.cornerRadius = 25
-//        $0.clipsToBounds = true
-//        return $0
-//    }(UIImageView(frame: CGRect(x: 31, y: view.center.y - 10, width: view.frame.width - 62, height: view.frame.height - view.center.y - 62)))
+    lazy var middleStack: UIStackView = {
+        $0.axis = .horizontal
+        $0.distribution = .fillProportionally
+        $0.spacing = 20
+        $0.addArrangedSubview(friendView)
+        $0.addArrangedSubview(followingView)
+        $0.addArrangedSubview(favoriteView)
+        return $0
+    }(UIStackView(frame: CGRect(x: 31, y: settingsButton.frame.origin.y + 50, width: view.frame.width - 62, height: 60)))
+    
+    lazy var friendView: UIView = {
+        $0.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
+        $0.layer.cornerRadius = 15
+        return $0
+    }(UIView())
+    lazy var followingView: UIView = {
+        $0.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
+        $0.layer.cornerRadius = 15
+        return $0
+    }(UIView())
+    lazy var favoriteView: UIView = {
+        $0.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
+        $0.layer.cornerRadius = 15
+        return $0
+    }(UIView())
+
+    lazy var contantImageView: UIImageView = {
+        $0.image = UIImage(named: "mountainImage.jpg")
+        $0.layer.cornerRadius = 25
+        $0.clipsToBounds = true
+        return $0
+    }(UIImageView(frame: CGRect(x: 31, y: settingsButton.frame.origin.y + 120, width: view.frame.width - 62, height: settingsButton.frame.origin.y + 100)))
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         title = "Профиль"
         navigationController?.navigationBar.prefersLargeTitles = true
 
-//        view.addSubview(topStack)
-//        view.addSubview(middleStack)
-//        view.addSubview(contantImageView)
+        view.addSubview(middleStack)
+        view.addSubview(contantImageView)
         view.addSubview(mainTableView)
     }
     
