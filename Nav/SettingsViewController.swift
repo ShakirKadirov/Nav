@@ -70,13 +70,7 @@ class SettingsViewController: UIViewController {
         return $0
     }(UIButton(frame: CGRect(x: 10, y: textFieldStack.frame.origin.y + 164, width: backgroundSquareView.frame.width - 20 , height: 54)))
     
-//    lazy var saveBtnAction = UIAction { _ in
-//        let name = self.nameTextField.text ?? ""
-//        let surName = self.surNameTextField.text ?? ""
-////        self.delegate?.setName(nameLbl: name, surNameLbl: surName)
-//        self.delegate?.didSaveSettings(name: name, surname: surName)
-//        print("Save")
-//    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,7 +90,7 @@ class SettingsViewController: UIViewController {
     }
     
     @objc private func didTapSaveSettings() {
-        print(123)
+        self.navigationController?.popViewController(animated: true)
         delegate?.didSaveSettings(name: nameTextField.text ?? "", surname: surNameTextField.text ?? "")
     }
 }

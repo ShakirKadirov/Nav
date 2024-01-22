@@ -24,16 +24,48 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "FD27C5F5-AC0E-4885-A01C-E70E9E64922E"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Nav/SettingsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "didTapSaveSettings()"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "ofsetView()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FD27C5F5-AC0E-4885-A01C-E70E9E64922E - 3b9ba782995015c3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Nav.SettingsViewController.didTapSaveSettings() -&gt; ()"
+                  moduleName = "Nav"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shakirkadirov/Developer/ErrorNillCourse/UIKit/Nav/Nav/SettingsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "804">
+               </Location>
+               <Location
+                  uuid = "FD27C5F5-AC0E-4885-A01C-E70E9E64922E - 3b9ba782995015c3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Nav.SettingsViewController.didTapSaveSettings() -&gt; ()"
+                  moduleName = "Nav"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shakirkadirov/Developer/ErrorNillCourse/UIKit/Nav/Nav/SettingsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "204">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

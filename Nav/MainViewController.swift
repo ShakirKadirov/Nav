@@ -112,6 +112,7 @@ class MainViewController: UIViewController, ViewControllerDelegate, SettingsView
     
     lazy var openSettings = UIAction{_ in
         let  navigatioVC = SettingsViewController()
+        navigatioVC.delegate = self
         self.navigationController?.pushViewController(navigatioVC, animated: true)
     }
 }
