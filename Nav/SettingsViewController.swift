@@ -6,10 +6,13 @@
 //
 
 import UIKit
+protocol SettingsViewControllerDelegate{
+    func didSaveSettings(name: String, surname: String)
+}
 
 class SettingsViewController: UIViewController {
     
-    var delegate: ViewControllerDelegate?
+    var delegate: SettingsViewControllerDelegate?
     
     lazy var secondViewTbl: UITableView = {
         $0.addSubview(topLabel)
@@ -63,15 +66,17 @@ class SettingsViewController: UIViewController {
         $0.setTitleColor(.white, for: .normal)
         $0.backgroundColor = .black
         $0.layer.cornerRadius = 25
+        $0.addTarget(self, action: #selector(didTapSaveSettings), for: .touchUpInside)
         return $0
-    }(UIButton(frame: CGRect(x: 10, y: textFieldStack.frame.origin.y + 164, width: backgroundSquareView.frame.width - 20 , height: 54), primaryAction: saveBtnAction))
+    }(UIButton(frame: CGRect(x: 10, y: textFieldStack.frame.origin.y + 164, width: backgroundSquareView.frame.width - 20 , height: 54)))
     
-    lazy var saveBtnAction = UIAction { _ in
-        let name = self.nameTextField.text ?? ""
-        let surName = self.surNameTextField.text ?? ""
-        self.delegate?.setName(nameLbl: name, surNameLbl: surName)
-        print("Save")
-    }
+//    lazy var saveBtnAction = UIAction { _ in
+//        let name = self.nameTextField.text ?? ""
+//        let surName = self.surNameTextField.text ?? ""
+////        self.delegate?.setName(nameLbl: name, surNameLbl: surName)
+//        self.delegate?.didSaveSettings(name: name, surname: surName)
+//        print("Save")
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,4 +95,8 @@ class SettingsViewController: UIViewController {
         return ofsetView
     }
     
+    @objc private func didTapSaveSettings() {
+        print(123)
+        delegate?.didSaveSettings(name: nameTextField.text ?? "", surname: surNameTextField.text ?? "")
+    }
 }

@@ -12,7 +12,11 @@ protocol ViewControllerDelegate{
     
 }
 
-class MainViewController: UIViewController, ViewControllerDelegate {
+class MainViewController: UIViewController, ViewControllerDelegate, SettingsViewControllerDelegate {
+    func didSaveSettings(name: String, surname: String) {
+        nameLbl.text = name
+        surNameLbl.text = surname
+    }
     
     func setName(nameLbl: String, surNameLbl: String) {
         self.nameLbl.text = nameLbl
@@ -71,7 +75,7 @@ class MainViewController: UIViewController, ViewControllerDelegate {
         $0.addArrangedSubview(followingView)
         $0.addArrangedSubview(favoriteView)
         return $0
-    }(UIStackView(frame: CGRect(x: 31, y: settingsButton.frame.origin.y + 50, width: view.frame.width - 62, height: 60)))
+    }(UIStackView(frame: CGRect(x: 31, y: settingsButton.frame.origin.y + 50, width: view.frame.width - 62, height: 79)))
     
     lazy var friendView: UIView = {
         $0.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
@@ -94,7 +98,7 @@ class MainViewController: UIViewController, ViewControllerDelegate {
         $0.layer.cornerRadius = 25
         $0.clipsToBounds = true
         return $0
-    }(UIImageView(frame: CGRect(x: 31, y: settingsButton.frame.origin.y + 120, width: view.frame.width - 62, height: settingsButton.frame.origin.y + 100)))
+    }(UIImageView(frame: CGRect(x: 31, y: settingsButton.frame.origin.y + 150, width: view.frame.width - 62, height: settingsButton.frame.origin.y + 100)))
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
